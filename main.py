@@ -1,42 +1,108 @@
+# def get_user_input():
+#     while True:
+#         name = input('Enter name --> ')
+#         if len(name) > 0 and len(name) <= 16:
+#             print('good')
+#             break
+#         else:
+#             print('bad')
+#     # while True:
+#     moon = int(input('Enter moon --> '))
+#         # if moon > 0 and moon <= 12:
+#         #     print('very good')
+#         #     break
+#         # else:
+#         #     print('very bad')
+#     while True:
+#         year = int(input('Enter year --> '))
+#         if year >= 5 and year <= 120:
+#             print('amazing')
+#             break
+#         else:
+#             print('oops')
+#     return name, moon, year
+#
+# def valide_month():
+#     moon = moon
+#     print(moon)
+#     try:
+#         if moon >= 0 and moon <= 12:
+#             print('very good')
+#         else:
+#             print('very bad')
+#     except ValueError:
+#         print('Невірне значення')
+#
+#
+#
+#
+#
+# print('fsdfsdfsd')
+#
+# if __name__ == '__main__':
+#     get_user_input()
+#     valide_month()
+
+
+def validate_month(month):
+    try:
+        while True:
+                month = int(month)
+                if 1 <= month <= 12:
+                    break
+                else:
+                    print('Введено невірне значення')
+    except ValueError:
+        print("Введено не число")
+
+
+def validate_year(year):
+    try:
+        while True:
+            year = int(year)
+            if 5 <= year <= 120:
+                break
+            else:
+                print('Введено погане значення')
+    except ValueError:
+        print("Введено не число")
+
+
 def get_user_input():
     while True:
-        name = input('Enter name --> ')
-        if len(name) > 0 and len(name) <= 16:
-            print('good')
-            break
-        else:
-            print('bad')
-    # while True:
-    moon = int(input('Enter moon --> '))
-        # if moon > 0 and moon <= 12:
-        #     print('very good')
-        #     break
-        # else:
-        #     print('very bad')
+        name = input("Введіть ім'я: ")
+        if
+
+
     while True:
-        year = int(input('Enter year --> '))
-        if year >= 5 and year <= 120:
-            print('amazing')
+        year = input("Введіть рік народження (від 5 до 120 років): ")
+        if validate_year(year):
             break
         else:
-            print('oops')
-    return name, moon, year
+            print("Некоректний рік. Будь ласка, спробуйте ще раз.")
 
-def valide_month(moon):
-    try:
-        if moon >= 0 and moon <= 12:
-            print('very good')
+    while True:
+        month = input("Введіть місяць народження (від 1 до 12): ")
+        if validate_month(month):
+            break
         else:
-            print('very bad')
-    except ValueError:
-        print('Невірне значення')
+            print("Некоректний місяць. Будь ласка, спробуйте ще раз.")
+
+    return name, year, month
 
 
+def create_test_file(name, year, month):
+    with open("test_file.txt", "w") as file:
+        file.write(name + "\n")
+        file.write(str(year) + "\n")
+        file.write(str(month) + "\n")
 
 
+def main():
+    name, year, month = get_user_input()
+    create_test_file(name, year, month)
+    print("Дані успішно записані у файл 'test_file.txt'.")
 
-print('fsdfsdfsd')
 
-if __name__ == '__main__':
-    get_user_input()
-    valide_month('moon')
+if __name__ == "__main__":
+    main()
