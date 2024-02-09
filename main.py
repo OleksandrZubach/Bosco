@@ -44,51 +44,62 @@
 #     valide_month()
 
 
-def validate_month(month):
-    try:
-        while True:
-                month = int(month)
-                if 1 <= month <= 12:
-                    break
-                else:
-                    print('Введено невірне значення')
-    except ValueError:
-        print("Введено не число")
-
-
-def validate_year(year):
-    try:
-        while True:
-            year = int(year)
-            if 5 <= year <= 120:
-                break
-            else:
-                print('Введено погане значення')
-    except ValueError:
-        print("Введено не число")
-
 
 def get_user_input():
     while True:
         name = input("Введіть ім'я: ")
-        if
-
-
+        if valide_name(name):
+            break
+        else:
+            # print("Некоректне ім'я. Будь ласка, спробуйте щераз")
+            continue
     while True:
-        year = input("Введіть рік народження (від 5 до 120 років): ")
+        year = int(input("Введіть рік народження (від 5 до 120 років): "))
         if validate_year(year):
             break
         else:
             print("Некоректний рік. Будь ласка, спробуйте ще раз.")
 
     while True:
-        month = input("Введіть місяць народження (від 1 до 12): ")
+        month = int(input("Введіть місяць народження (від 1 до 12): "))
         if validate_month(month):
             break
         else:
             print("Некоректний місяць. Будь ласка, спробуйте ще раз.")
 
     return name, year, month
+
+def valide_name(name):
+    while True:
+        name = name
+        if 0 < len(name) <=16:
+            break
+        else:
+            print('Невірне значення')
+
+def validate_year(year):
+    try:
+        while True:
+            year = int(year)
+            if 5 <= year <= 120:
+                return year
+            else:
+                print('Введено погане значення')
+    except ValueError:
+        print("Введено не число")
+
+def validate_month(month):
+    try:
+        while True:
+            month = int(month)
+            if 1 <= month <= 12:
+                return  month
+            else:
+                print('Введено невірне значення')
+    except ValueError:
+        print("Введено не число")
+
+
 
 
 def create_test_file(name, year, month):
